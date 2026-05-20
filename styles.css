@@ -1,0 +1,193 @@
+#leetdraw-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999998;
+  pointer-events: none;
+}
+
+#leetdraw-canvas.active {
+  pointer-events: auto;
+  cursor: crosshair;
+}
+
+/* Floating Toolbar with Glassmorphism */
+#leetdraw-toolbar {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999 !important;
+  
+  background: rgba(30, 34, 42, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  
+  padding: 8px 16px;
+  border-radius: 16px;
+  display: flex !important;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+#leetdraw-toolbar.minimized {
+  padding: 6px;
+  bottom: 15px;
+}
+
+#leetdraw-toolbar.minimized .tool-element {
+  display: none !important;
+}
+
+.ld-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ld-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ld-btn svg {
+  stroke: #ffffff;
+  fill: none;
+}
+
+.ld-btn.active-tool {
+  background: #3b82f6 !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Power Switch State Styling overrides */
+#tool-toggle {
+  background: #ef4444; /* Standard red when off */
+  border-color: #dc2626;
+}
+#tool-toggle.active-mode {
+  background: #10b981 !important; /* Green when on */
+  border-color: #059669 !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+}
+
+.ld-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 4px;
+}
+
+.color-wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  position: relative;
+}
+
+#tool-color {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Table dimension numeric box inputs */
+.table-config-input {
+  width: 35px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 6px;
+  padding: 4px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Injected Text Input Box overrides */
+.leetdraw-text-input {
+  position: fixed;
+  background: rgba(20, 22, 26, 0.95);
+  color: white;
+  border: 1px solid #3b82f6;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 999999;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* 1. Force absolute structural isolation on the wrapper containers */
+.table-input-container {
+  all: initial !important; /* Strips any inherited browser configurations */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #252529 !important;
+  border-radius: 8px !important;
+  width: 36px !important;   
+  height: 36px !important;  
+  border: 1px solid #3f3f46 !important;
+  color: #a1a1aa !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. Standardize the actual input field layout properties */
+.table-input-container input[type="number"] {
+  width: 100% !important;
+  height: 14px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-family: monospace !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-bottom: 2px !important;
+  line-height: 14px !important;
+  box-sizing: border-box !important;
+  
+  /* Kill native numeric adjustment arrows across WebKit engines */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+/* 3. Kill the physical alignment shifting spinner buttons on Chrome/Safari/Edge */
+.table-input-container input[type="number"]::-webkit-outer-spin-button,
+.table-input-container input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+}
+
+/* 4. Kill the spinner buttons on Firefox */
+.table-input-container input[type="number"] {
+  -moz-appearance: textfield !important;
+}

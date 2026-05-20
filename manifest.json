@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "LeetDraw - Diagramming Tool for Competitive Coding",
+  "version": "1.3.14",
+  "description": "Draw diagrams, trees, and logic models directly on top of your favorite competitive coding pages.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_icon": "iconHigh.png"
+  },
+  "icons": {
+    "16": "iconLow.png",
+    "48": "iconLow.png",
+    "128": "iconHigh.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://leetcode.com/problems/*",
+        "https://www.codewars.com/kata/*",
+        "https://www.hackerrank.com/challenges/*",
+        "https://www.codechef.com/problems/*"
+      ],
+      "js": ["html2canvas.min.js", "content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
