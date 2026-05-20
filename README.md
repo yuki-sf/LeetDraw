@@ -77,7 +77,7 @@ LeetDraw is now ready! Navigate to any supported problem link (e.g., a LeetCode 
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/YOUR_USERNAME/LeetDraw/issues) if you have optimization proposals or custom canvas features.
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yuki-sf/LeetDraw/issues) if you have optimization proposals or custom canvas features.
 
 ## License
 
